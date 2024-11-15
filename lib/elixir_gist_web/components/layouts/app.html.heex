@@ -15,5 +15,12 @@
     <button class="img-down-arrow" type="button" id="user-menu-button">
       <img src="/images/user-image.svg" alt="Profile Image" class="w-8 h-8 round-image-padding">
     </button>
+    <div id="dropdown_menu" class="absolute right-0 mt-2 py-2 w-48 bg-egDark rounded-lg shadow-xl border border-white">
+      <%= if @current_user do %>
+        Sign out
+      <% else %>
+      <.link href={~p"/users/log_in"} class="" role="menuitem" tabindex="-1"></.link>
+      <% end %>
+    </div>
   </div>
 </header>
