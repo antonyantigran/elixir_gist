@@ -16,13 +16,13 @@ module.exports = {
       colors: {
         egDark: {
           dark: "#010101",
-          DEFAULT: "#3C3B#B",
-          light: "828282"
+          DEFAULT: "#3C3B3B",
+          light: "#828282"
         },
         egPurpule: {
           dark: "#631A61",
-          DEFAULT: "A834A5",
-          light: "E88FE5"
+          DEFAULT: "#A834A5",
+          light: "#E88FE5"
         },
         egLavender: {
           dark: "8C52FF",
@@ -34,8 +34,8 @@ module.exports = {
         brand: ["WorkSans", "sans-serif"]
       },
       fontWeight: {
-        regular: "normal",
-        bold: "bold"
+        regular: "400",
+        bold: "700"
       }
     },
   },
