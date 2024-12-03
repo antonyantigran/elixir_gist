@@ -1,26 +1,36 @@
-<header class="flex justify-between items-center px-6 py-3 bg-egDark">
-  <div class="flex relative">
+<header class="flex items-center justify-between px-6 py-3 bg-egDark">
+  <div class="relative flex">
     <a href={~p"/"}>
-      <img src="/images/gist-logo.svg" alt="logo" class="h-8 w-auto">
+      <img src="/images/gist-logo.svg" alt="logo" class="w-auto h-8">
     </a>
     <a href={~p"/"} class="mr-6">
-      <div class="text-white font-brand font-bold text-3xl">Gist</div>
+      <div class="text-3xl font-bold text-white font-brand">Gist</div>
     </a>
     <div>
-      <input type="text" class="rounded-lg focus:outline-none focus:border-egLavender focus:ring-0 px-3 py-1 bg-egDark-dark placeholder-egDark-light text-white font-brand font-regular text-sm mr-5 border-white" placeholder="Search...">
+      <input type="text" class="px-3 py-1 mr-5 text-sm text-white border-white rounded-lg focus:outline-none focus:border-egLavender focus:ring-0 bg-egDark-dark placeholder-egDark-light font-brand font-regular" placeholder="Search...">
      <button class="mt-2 mr-2 text-white text-[1rem] font-brand font-bold hover:text-egDark-light">All gists</button> 
     </div>
   </div>
   <div class="relative">
-    <button class="img-down-arrow" type="button" id="user-menu-button">
+    <button class="img-down-arrow" type="button" id="user-menu-button" phx-click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu}>
       <img src="/images/user-image.svg" alt="Profile Image" class="w-8 h-8 round-image-padding">
     </button>
-    <div id="dropdown_menu" class="absolute right-0 mt-2 py-2 w-48 bg-egDark rounded-lg shadow-xl border border-white">
+    <div id="dropdown_menu" class="absolute right-0 w-48 py-2 mt-2 border border-white rounded-lg shadow-xl bg-egDark dropdown-menu-arrow" hidden="true">
       <%= if @current_user do %>
-        Sign out
+      <.link href={~p"/users/settings"} class="border-b border-white menu-item border-opacity-50" role="menuitem" tabindex="-1" method="get" id="user-menu-item-0">Signed in as <%= @current_user.email %></.link>
+      <.link href="#" class="menu-item" role="menuitem" tabindex="-1" method="get" id="user-menu-item-1">Your gists</.link>
+      <.link href="#" class="border-b border-white menu-item border-opacity-50" role="menuitem" tabindex="-1" method="get" id="user-menu-item-2">Saved gists</.link>
+      <.link href={~p"/users/log_out"} class="menu-item" role="menuitem" tabindex="-1" method="delete" id="user-menu-item-3">Sign out</.link>
       <% else %>
-      <.link href={~p"/users/log_in"} class="" role="menuitem" tabindex="-1"></.link>
+        <.link href={~p"/users/log_in"} class="border-b border-white menu-item border-opacity-50" role="menuitem" tabindex="-1" method="get" id="user-menu-item-0">Sign in</.link>
+        <.link href={~p"/users/register"} class="menu-item" role="menuitem" tabindex="-1" method="get" id="user-menu-item-1">Register</.link>
       <% end %>
     </div>
   </div>
 </header>
+
+<main>
+  <.flash_group flash={@flash} />
+  <%= @inner_content %>
+</main>
+
