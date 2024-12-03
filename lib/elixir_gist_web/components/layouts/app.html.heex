@@ -15,7 +15,7 @@
     <button class="img-down-arrow" type="button" id="user-menu-button" phx-click={ElixirGistWeb.Layouts.App.toggle_dropdown_menu}>
       <img src="/images/user-image.svg" alt="Profile Image" class="w-8 h-8 round-image-padding">
     </button>
-    <div id="dropdown_menu" class="absolute right-0 w-48 py-2 mt-2 border border-white rounded-lg shadow-xl bg-egDark dropdown-menu-arrow" hidden="true">
+    <div id="dropdown_menu" class="absolute right-0 w-48 py-2 mt-2 border border-white rounded-lg shadow-xl bg-egDark dropdown-menu-arrow" hidden="true" phx-click-away={ElixirGistWeb.Layouts.App.toggle_dropdown_menu}>
       <%= if @current_user do %>
       <.link href={~p"/users/settings"} class="border-b border-white menu-item border-opacity-50" role="menuitem" tabindex="-1" method="get" id="user-menu-item-0">Signed in as <%= @current_user.email %></.link>
       <.link href="#" class="menu-item" role="menuitem" tabindex="-1" method="get" id="user-menu-item-1">Your gists</.link>
