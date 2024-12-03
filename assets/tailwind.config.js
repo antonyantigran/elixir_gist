@@ -25,7 +25,7 @@ module.exports = {
           light: "#E88FE5"
         },
         egLavender: {
-          dark: "8C52FF",
+          dark: "#8C52FF",
           DEFAULT: "#9D74EE",
           light: "#BC9AFF"
         }
